@@ -370,7 +370,8 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'derekwyatt/vim-scala'
@@ -382,7 +383,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
-
+Plugin 'vimtaku/hl_matchit.vim'
+Plugin 'Konfekt/FastFold'
 
 
 
@@ -447,4 +449,23 @@ au BufRead,BufNewFile *.tex set spell
 augroup filetypedetect 
   au! BufRead,BufNewFile *.m,*.oct set filetype=octave 
 augroup END 
+
+
+set foldmethod=syntax
+
+syntax on
+"autocmd BufRead,BufNewFile *.svh,*.sva set filetype=systemverilog
+""set omnifunc=syntaxcomplete#Complete
+au BufRead,BufNewFile *.svh,*.sva set filetype=systemverilog
+
+inoremap <leader>, <C-x><C-o>
+filetype plugin on
+
+"nnoremap <leader>i :VerilogFollowInstance<CR>
+"nnoremap <leader>I :VerilogFollowPort<CR>
+"nnoremap <leader>u :VerilogGotoInstanceStart<CR>
+runtime macros/matchit.vim
+
+"super tab
+let g:SuperTabDefaultCompletionType = 'context'
 
