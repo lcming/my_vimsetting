@@ -162,7 +162,7 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>
+"map <leader>bd :Bclose<cr>
 
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
@@ -263,8 +263,8 @@ vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 "
 map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+map <leader>w :cn<cr>
+map <leader>e :cp<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -366,14 +366,12 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'VundleVim/Vundle.vim'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'ervandew/supertab'
-Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'garbas/vim-snipmate'
+Plugin 'ervandew/supertab'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'vhda/verilog_systemverilog.vim'
 Plugin 'vim-airline/vim-airline-themes'
@@ -382,9 +380,16 @@ Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'majutsushi/tagbar'
-Plugin 'Yggdroot/indentLine'
+"Plugin 'Yggdroot/indentLine'
 Plugin 'vimtaku/hl_matchit.vim'
 Plugin 'Konfekt/FastFold'
+Plugin 'WolfgangMehner/vim-support'
+Plugin 'WolfgangMehner/bash-support'
+Plugin 'WolfgangMehner/perl-support'
+Plugin 'jmcneal/verilog-support'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'SirVer/ultisnips'
+let g:Perl_GuiSnippetBrowser = 'commandline'
 
 
 
@@ -398,9 +403,8 @@ let g:ycm_enable_diagnostic_signs = 1
 
 
 " snippet setting
-let g:UltiSnipsExpandTrigger="<c-k>"
-let g:UltiSnipsJumpForwardTrigger="<c-a>"
-let g:UltiSnipsJumpBackwardTrigger="<c-q>"
+"let g:UltiSnipsExpandTrigger="<c-k>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
 
 " theme
 let g:airline#extensions#tabline#enabled = 1
@@ -434,6 +438,7 @@ let g:syntastic_verilog_compiler = 'verilator'
 
 
 
+
 " my syntax hightlight
 hi SpellBad cterm=reverse
 hi SpellBad ctermbg=none
@@ -461,11 +466,16 @@ au BufRead,BufNewFile *.svh,*.sva set filetype=systemverilog
 inoremap <leader>, <C-x><C-o>
 filetype plugin on
 
-"nnoremap <leader>i :VerilogFollowInstance<CR>
-"nnoremap <leader>I :VerilogFollowPort<CR>
-"nnoremap <leader>u :VerilogGotoInstanceStart<CR>
+nnoremap <leader>i :VerilogFollowInstance<CR>
+nnoremap <leader>I :VerilogFollowPort<CR>
+nnoremap <leader>u :VerilogGotoInstanceStart<CR>
 runtime macros/matchit.vim
 
 "super tab
 let g:SuperTabDefaultCompletionType = 'context'
 
+let g:Perl_GuiTemplateBrowser = 'explorer'
+"
+map <leader>n :bn<cr>
+map <leader>b :bp<cr>
+map <leader>d :bd<cr>
